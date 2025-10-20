@@ -6,7 +6,7 @@
 
 (function(){
   // Change this to where the wallet index.html is hosted (the wallet you pushed)
-  const WALLET_URL = '#'; // e.g. https://your-domain.com/index.html or the deployed url of evm1est/evmt
+  const WALLET_URL = 'https://evm1est.github.io/evmt/index.html'; // e.g. https://your-domain.com/index.html or the deployed url of evm1est/evmt
 
   function openWalletPopup(width = 480, height = 780) {
     const left = (screen.width / 2) - (width / 2);
