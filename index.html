@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MusicChain Multi-Chain Wallet — Receive ERC20</title>
+  <title>MusicChain Wallet — Receive ERC20</title>
   <link rel="stylesheet" href="style.css" />
   <!-- Ethers v5 (UMD) -->
   <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
@@ -36,7 +36,7 @@
             <input id="signup-password" type="password" placeholder="Strong password" />
           </label>
           <button id="create-wallet">Create Wallet</button>
-          <p class="muted">Generates a new wallet encrypted in your browser. Save your seed phrase safely.</p>
+          <p class="muted">This generates a new wallet encrypted in your browser. Save your seed phrase safely.</p>
           <pre id="mnemonic" class="mnemonic hidden"></pre>
         </div>
 
@@ -72,7 +72,7 @@
             <button id="copy-address">Copy</button>
             <button id="show-qr">QR</button>
           </p>
-          <p>Configured Chains:
+          <p>Connected Chains:
             <select id="chain-select"></select>
           </p>
           <p>Balance: <span id="native-balance">—</span></p>
@@ -83,21 +83,12 @@
         </div>
       </div>
 
-      <section id="chains-config" class="panel">
-        <h3>Chains configuration (add multiple)</h3>
-        <p>Enter chain IDs and optional RPCs. Examples:
-          <code>1</code>, <code>137: https://polygon-rpc.com</code>, <code>56:https://bsc-dataseed.binance.org/</code>
-        </p>
-        <label>Chains (comma or newline separated) — allowed formats:
-          <ul>
-            <li><code>chainId</code> (uses known defaults)</li>
-            <li><code>chainId:rpc</code> (specify custom RPC)</li>
-          </ul>
-          <textarea id="chains-input" placeholder="137, 1, 5:https://rpc.ankr.com/eth_goerli"></textarea>
-        </label>
-        <button id="apply-chains">Apply Chains</button>
-        <p class="muted">These chains will be monitored and used for balance checks and receiving.</p>
-      </section>
+      <div id="qr-modal" class="modal hidden">
+        <div class="modal-card">
+          <button id="close-qr" class="close">✕</button>
+          <div id="qr"></div>
+        </div>
+      </div>
 
       <section id="receive" class="panel">
         <h3>Receive</h3>
@@ -116,7 +107,7 @@
       <section id="monitor" class="panel">
         <h3>Monitor incoming transfers</h3>
 
-        <label>Site address to monitor (e.g., musicchain payout address)
+        <label>Site address to monitor (e.g., musicchain contract or site payout address)
           <input id="site-address" placeholder="0x..." />
         </label>
         <div class="row small">
@@ -158,13 +149,11 @@
 
   <footer class="footer">
     <div>
-      <strong>MusicChain Wallet</strong> — Accept ERC20 tokens from site (musicchain.netlify.app).
+      <strong>MusicChain Wallet</strong> — Accept ERC20 tokens from your site (musicchain.netlify.app).
     </div>
     <div class="muted">Built with Aero UI style. Mobile-first responsive layout.</div>
   </footer>
 
   <script src="app.js"></script>
-  <script src="style.css"></script>
-  <script src="musicchain-integration.js"></script>
 </body>
 </html>
